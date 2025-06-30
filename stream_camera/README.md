@@ -2,6 +2,8 @@
 
 This project provides a lightweight camera streaming server built with Flask and OpenCV. It supports both single and multi-camera setups and is intended for use on systems like Raspberry Pi with USB cameras.
 
+The **enable_uvc_quick_fix_bandwidth.sh** script limits the bandwidth per camera, preventing a single device from monopolizing the connection.
+
 ## Features
 
 - Stream one or more camera feeds over HTTP as MJPEG
@@ -38,8 +40,9 @@ pip install gunicorn
 
 ### 3. Enable UVC bandwidth quirk
 
+You might need escalated privileges to write to /etc/modprobe.d/.
 ```bash
-sudo bash enable_uvc_quick_fix_bandwidth.sh
+./enable_uvc_quick_fix_bandwidth.sh
 ```
 
 Or, manually create the file /etc/modprobe.d/uvcvideo.conf and add:
