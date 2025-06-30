@@ -3,9 +3,30 @@
 	<head>
 		<meta charset="UTF-8">
 		<title>Video Stream</title> 
-		<meta name="viewport" content="width=device-width, initial scale=1.0">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<style>
+
+			html, body {
+				margin: 0;
+				padding: 0;
+				box-sizing: border-box;
+			}
+
+			.grid {
+				display: grid;
+				gap: 0;
+
+				grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+			}
+		</style>
 	</head>
 	<body>
-		<img src="{{ url_for('live_cam') }}">
+		<div class="grid">
+			{% for camera in camera_endpoints %}
+			<div class="grid-el">
+				<img src="{{camera}}">
+			</div>
+			{% endfor %}
+		</div>
 	</body>
 </html>
